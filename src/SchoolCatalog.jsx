@@ -1,4 +1,25 @@
+// School Catalog Component
+
+// Imports
+import { useEffect, useState } from "react";
+import courseData from "../public/api/courses.json"
+
 export default function SchoolCatalog() {
+  // Hook
+  const [courses, setCourses] = useState([]);
+
+  useEffect(() => {
+    // Fetching data from a local JSON
+    fetch("/api/courses.json")
+      // Converts data into a JavaScript object
+      .then((response) => response.json())
+      // Updates the state with fetched data
+      .then((data) => {
+        console.log(data[1]);
+        setCourses(data);
+      });
+  }, []);
+
   return (
     <div className="school-catalog">
       <h1>School Catalog</h1>
