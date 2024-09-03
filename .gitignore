@@ -11,6 +11,8 @@ node_modules
 dist
 dist-ssr
 *.local
+push
+newFile
 
 # Editor directories and files
 .idea
