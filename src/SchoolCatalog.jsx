@@ -3,6 +3,7 @@
 // Imports
 import { useEffect, useState } from "react";
 import courseData from "../public/api/courses.json"
+import { TableRow } from "./components/TableRow";
 
 export default function SchoolCatalog() {
   // Hook
@@ -15,10 +16,11 @@ export default function SchoolCatalog() {
       .then((response) => response.json())
       // Updates the state with fetched data
       .then((data) => {
-        console.log(data[1]);
         setCourses(data);
       });
   }, []);
+
+  console.log({courses});
 
   return (
     <div className="school-catalog">
@@ -36,6 +38,9 @@ export default function SchoolCatalog() {
           </tr>
         </thead>
         <tbody>
+          {courses.map((course, index) => (
+            <TableRow key={index} {...course} />
+          ))}
           <tr>
             <td>1</td>
             <td>PP1000</td>
