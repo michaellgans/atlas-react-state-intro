@@ -8,6 +8,7 @@ import { TableRow } from "./components/TableRow";
 export default function SchoolCatalog() {
   // Hook
   const [courses, setCourses] = useState([]);
+  const [filter, setFilter] = useState("");
 
   useEffect(() => {
     // Fetching data from a local JSON
@@ -22,10 +23,16 @@ export default function SchoolCatalog() {
 
   console.log({courses});
 
+  const filteredData  = courses.filter((item) => item.courseNumber.startsWith(filter) || item.courseName.startsWith(filter));
+
   return (
     <div className="school-catalog">
       <h1>School Catalog</h1>
-      <input type="text" placeholder="Search" />
+      <input 
+        type="text" 
+        placeholder="Search Course Number or Name"
+        onChange={(event) => setFilter(event.target.value)}
+      />
       <table>
         {/* Table Head */}
         <thead>
@@ -41,7 +48,7 @@ export default function SchoolCatalog() {
         {/* Table Body */}
         <tbody>
         {/* Generates TableRow Components per JSON Object */}
-          {courses.map((course, index) => (
+          {filteredData.map((course, index) => (
             <TableRow key={index} {...course} />
           ))}
         </tbody>
