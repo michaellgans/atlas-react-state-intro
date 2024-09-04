@@ -1,7 +1,7 @@
 // TableRow Component
 
 // Returns a TableRow Component
-export function TableRow({trimester, courseNumber, courseName, semesterCredits, totalClockHours}) {
+export function TableRow({trimester, courseNumber, courseName, semesterCredits, totalClockHours, addCourse}) {
     return (
         <tr>
             <td>{trimester}</td>
@@ -10,7 +10,7 @@ export function TableRow({trimester, courseNumber, courseName, semesterCredits, 
             <td>{semesterCredits}</td>
             <td>{totalClockHours}</td>
             <td>
-            <button>Enroll</button>
+            <button onClick={() => addCourse({courseNumber, courseName})}>Enroll</button>
             </td>
         </tr>
     );

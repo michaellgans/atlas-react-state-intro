@@ -1,11 +1,15 @@
 // School Catalog Component
 
 // Imports
+import { useContext } from "react";
 import { TableRow } from "./components/TableRow";
 import { useTableData } from "./useTableData";
+import { AppContext } from "./ContextProvider.jsx";
 
 export default function SchoolCatalog() {
   // Hooks
+  const { addCourse } = useContext(AppContext);
+
   const {
     currentPage,
     setFilter,
@@ -40,7 +44,7 @@ export default function SchoolCatalog() {
         <tbody>
         {/* Generates TableRow Components per JSON Object */}
           {currentPage.map((course, index) => (
-            <TableRow key={index} {...course} />
+            <TableRow key={index} {...course} addCourse={addCourse} />
           ))}
         </tbody>
       </table>
