@@ -27,6 +27,7 @@ export default function SchoolCatalog() {
       <h1>School Catalog</h1>
       <input type="text" placeholder="Search" />
       <table>
+        {/* Table Head */}
         <thead>
           <tr>
             <th>Trimester</th>
@@ -37,40 +38,12 @@ export default function SchoolCatalog() {
             <th>Enroll</th>
           </tr>
         </thead>
+        {/* Table Body */}
         <tbody>
+        {/* Generates TableRow Components per JSON Object */}
           {courses.map((course, index) => (
             <TableRow key={index} {...course} />
           ))}
-          <tr>
-            <td>1</td>
-            <td>PP1000</td>
-            <td>Beginning Procedural Programming</td>
-            <td>2</td>
-            <td>30</td>
-            <td>
-              <button>Enroll</button>
-            </td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>PP1100</td>
-            <td>Basic Procedural Programming</td>
-            <td>4</td>
-            <td>50</td>
-            <td>
-              <button>Enroll</button>
-            </td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>OS1000</td>
-            <td>Fundamentals of Open Source Operating Systems</td>
-            <td>2.5</td>
-            <td>37.5</td>
-            <td>
-              <button>Enroll</button>
-            </td>
-          </tr>
         </tbody>
       </table>
       <div className="pagination">
