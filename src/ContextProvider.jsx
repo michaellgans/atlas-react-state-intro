@@ -9,8 +9,12 @@ export function ContextProvider({ children }) {
         setEnrolledCourses([...enrolledCourses, course]);
     };
 
+    const removeCourse = (courseNumber) => {
+        setEnrolledCourses(enrolledCourses.filter((course) => course.courseNumber !== courseNumber));
+    };
+
     return (
-        <AppContext.Provider value={{ enrolledCourses, addCourse }}>
+        <AppContext.Provider value={{ enrolledCourses, addCourse, removeCourse }}>
             {children}
         </AppContext.Provider>
     );

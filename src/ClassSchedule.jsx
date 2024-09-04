@@ -3,7 +3,7 @@ import { AppContext } from "./ContextProvider.jsx";
 
 export default function ClassSchedule() {
   // Hooks
-  const { enrolledCourses } = useContext(AppContext);
+  const { enrolledCourses, removeCourse } = useContext(AppContext);
 
   return (
     <div className="class-schedule">
@@ -22,17 +22,10 @@ export default function ClassSchedule() {
               <td>{courseNumber}</td>
               <td>{courseName}</td>
               <td>
-                <button>Drop</button>
+                <button onClick={() => removeCourse(courseNumber)}>Drop</button>
               </td>
             </tr>
           ))}
-          {/* <tr>
-            <td>OS1000</td>
-            <td>Fundamentals of Open Source Operating Systems</td>
-            <td>
-              <button>Drop</button>
-            </td>
-          </tr> */}
         </tbody>
       </table>
     </div>
